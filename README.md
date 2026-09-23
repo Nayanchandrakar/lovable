@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fc11d085-4be2-4843-8f11-017f18b68d74" width="100%" alt="Vibe: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL.">
+  <img src="https://github.com/user-attachments/assets/06ccac25-bdfb-4336-bcc1-2ffef5b63e3e" width="100%" alt="Vibe: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL.">
 </p>
 
 Describe an application in plain language, and an autonomous coding agent writes it inside an isolated cloud sandbox, runs it, and returns a live preview you can keep iterating on.
@@ -43,7 +43,7 @@ Four problems shape this product category, and the whole repository is organized
 Those four concerns produce three runtimes and one durable record. Vibe is an end-to-end implementation of them in one repository, which makes it a useful reference for how agentic developer tools are actually wired together:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d94e619d-1385-4c30-930e-f03d853aa656" width="100%" alt="Where the work happens: the Next.js app server handles the synchronous tRPC request, consumes a credit and emits an event; an Inngest function runs the agent in memoized steps; an E2B sandbox gives the agent a terminal and a filesystem. The browser polls every five seconds and renders the stored fragment as a live preview iframe and a code tree.">
+  <img src="https://github.com/user-attachments/assets/83996357-dfbc-4bf9-83a1-3713e15c36a2" width="100%" alt="Where the work happens: the Next.js app server handles the synchronous tRPC request, consumes a credit and emits an event; an Inngest function runs the agent in memoized steps; an E2B sandbox gives the agent a terminal and a filesystem. The browser polls every five seconds and renders the stored fragment as a live preview iframe and a code tree.">
 </p>
 
 ### Request lifecycle
