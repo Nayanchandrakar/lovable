@@ -13,12 +13,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.39.5",
+    "@clerk/nextjs": "^7.9.5",
     "@clerk/themes": "^2.4.57",
     "@e2b/code-interpreter": "^1.5.1",
     "@hookform/resolvers": "^5.4.0",
     "@inngest/agent-kit": "^0.13.2",
-    "@opentelemetry/winston-transport": "^0.14.1",
     "@paralleldrive/cuid2": "^2.3.1",
     "@prisma/client": "^6.19.3",
     "@radix-ui/react-accordion": "^1.2.14",
@@ -65,7 +64,7 @@
     "next-themes": "^0.4.6",
     "prismjs": "^1.30.0",
     "random-word-slugs": "^0.1.7",
-    "rate-limiter-flexible": "^7.4.0",
+    "rate-limiter-flexible": "^11.2.1",
     "react": "^19.2.7",
     "react-day-picker": "^9.14.0",
     "react-dom": "^19.2.7",
@@ -83,7 +82,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
-    "@e2b/cli": "^1.9.2",
     "@tailwindcss/postcss": "^4.3.1",
     "@types/node": "^20.19.43",
     "@types/prismjs": "^1.26.6",

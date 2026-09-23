@@ -11,8 +11,6 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "declaration": true,
-    "declarationMap": true,
     "moduleDetection": "force",
     "noUncheckedIndexedAccess": true,
     "allowUnusedLabels": false,
