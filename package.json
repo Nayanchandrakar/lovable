@@ -18,6 +18,7 @@
     "@e2b/code-interpreter": "^1.5.1",
     "@hookform/resolvers": "^5.4.0",
     "@inngest/agent-kit": "^0.13.2",
+    "@opentelemetry/instrumentation-winston": "^0.66.0",
     "@paralleldrive/cuid2": "^2.3.1",
     "@prisma/client": "^6.19.3",
     "@radix-ui/react-accordion": "^1.2.14",
