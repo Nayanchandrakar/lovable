@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="1200" height="420" alt="hero" src="https://github.com/user-attachments/assets/fe8e6823-2c36-4481-86b4-7986a3db679e" /> result is saved as a fragment with a live preview URL.">
+  <img src="https://github.com/user-attachments/assets/06ccac25-bdfb-4336-bcc1-2ffef5b63e3e" width="100%" alt="Vibe: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL.">
 </p>
 
 Describe an application in plain language, and an autonomous coding agent writes it inside an isolated cloud sandbox, runs it, and returns a live preview you can keep iterating on.
