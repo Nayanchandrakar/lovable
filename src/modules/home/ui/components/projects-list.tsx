@@ -39,7 +39,7 @@ export const ProjectsList = () => {
                   alt="alpha"
                   width={32}
                   height={32}
-                  className="object-contain"
+                  className="object-contain dark:invert"
                 />
                 <div className="flex flex-col">
                   <h3 className="truncate font-medium">{project.name}</h3>

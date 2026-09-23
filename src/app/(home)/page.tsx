@@ -12,7 +12,7 @@ export default function HomePage() {
             alt="alpha"
             width={50}
             height={50}
-            className="hidden md:block"
+            className="hidden md:block dark:invert"
           />
         </div>
         <h1 className="text-2xl md:text-5xl  font-bold text-center">

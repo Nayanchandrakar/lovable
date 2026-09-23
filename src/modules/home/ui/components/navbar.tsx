@@ -20,7 +20,13 @@ export const Navbar = () => {
     >
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.svg" alt="alpha" width={24} height={24} />
+          <Image
+            src="/logo.svg"
+            alt="alpha"
+            width={24}
+            height={24}
+            className="dark:invert"
+          />
           <span className="font-semibold text-lg">Alpha</span>
         </Link>
         <SignedOut>

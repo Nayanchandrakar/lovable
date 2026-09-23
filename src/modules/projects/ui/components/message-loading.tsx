@@ -42,7 +42,7 @@ export const MessageLoading = () => {
           alt="alpha"
           width={18}
           height={18}
-          className="shrink-0"
+          className="shrink-0 dark:invert"
         />
         <span className="text-sm font-medium">Alpha</span>
       </div>

@@ -65,7 +65,7 @@ const AssistantMessage = ({
           alt="alpha"
           width={18}
           height={18}
-          className="shrink-0"
+          className="shrink-0 dark:invert"
         />
         <span className="text-sm font-medium">Alpha</span>
         <span className="text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">

@@ -17,7 +17,7 @@ function PricingPage() {
             alt="alpha"
             width={15}
             height={15}
-            className="hidden md:block"
+            className="hidden md:block dark:invert"
           />
         </div>
         <h1 className="text-xl md:text-3xl font-bold text-center">Pricing</h1>
