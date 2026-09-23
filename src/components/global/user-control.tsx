@@ -20,7 +20,7 @@ export const UserControl = ({ showName }: Props) => {
           userButtonAvatarBox: "rounded-md! size-8!",
           userButtonTrigger: "rounded-md!",
         },
-        baseTheme: currentTheme === "dark" ? dark : undefined!,
+        ...(currentTheme === "dark" ? { baseTheme: dark } : {}),
       }}
     />
   )

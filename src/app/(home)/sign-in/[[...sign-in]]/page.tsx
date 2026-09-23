@@ -12,7 +12,7 @@ export default function SignInPage() {
         <div className="flex flex-col items-center">
           <SignIn
             appearance={{
-              baseTheme: currentTheme === "dark" ? dark : undefined!,
+              ...(currentTheme === "dark" ? { baseTheme: dark } : {}),
               elements: {
                 cardBox: "border! shadow-none! rounded-lg!",
               },

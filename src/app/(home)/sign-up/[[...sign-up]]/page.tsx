@@ -12,7 +12,7 @@ export default function SignUpPage() {
         <div className="flex flex-col items-center">
           <SignUp
             appearance={{
-              baseTheme: currentTheme === "dark" ? dark : undefined!,
+              ...(currentTheme === "dark" ? { baseTheme: dark } : {}),
               elements: {
                 cardBox: "border! shadow-none! rounded-lg!",
               },

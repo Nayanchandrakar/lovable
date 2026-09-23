@@ -26,12 +26,13 @@ function PricingPage() {
         </p>
         <PricingTable
           appearance={{
-            baseTheme: currenetTheme === "dark" ? dark : undefined!,
+            ...(currenetTheme === "dark" ? { baseTheme: dark } : {}),
             elements: {
               pricingTableCard: "border! shadow-none! rounded-lg!",
             },
           }}
         />
+
       </section>
     </div>
   )
