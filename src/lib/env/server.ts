@@ -8,15 +8,27 @@ export const serverEnv = createEnv({
       .default("development"),
 
     DATABASE_URL: z.string({
-      required_error: "DATABASE_URL is required in environment variables",
+      error: "DATABASE_URL is required in environment variables",
     }),
 
-    GEMINI_API_KEY: z.string({
-      required_error: "GEMINI_API_KEY is required in environment variables",
+    OPENAI_API_KEY: z.string({
+      error: "OPENAI_API_KEY is required in environment variables",
+    }),
+
+    OPENAI_BASE_URL: z.string({
+      error: "OPENAI_BASE_URL is required in environment variables",
     }),
 
     E2B_API_KEY: z.string({
-      required_error: "E2B_API_KEY is required in environment variables",
+      error: "E2B_API_KEY is required in environment variables",
+    }),
+
+    CODING_AGENT_MODEL: z.string({
+      error: "CODING_AGENT_MODEL is required in environment variables",
+    }),
+
+    GENERATOR_MODEL: z.string({
+      error: "GENERATOR_MODEL is required in environment variables",
     }),
   },
   experimental__runtimeEnv: process.env,

@@ -89,7 +89,7 @@ The code agent is instructed to behave as a senior engineer working inside a san
 - The dev server is already running and hot-reloads on file writes, so `dev`/`build`/`start` commands must never be run.
 - Output must be complete features, not stubs or placeholders.
 
-Model configuration lives in `src/inngest/functions.ts`: `gemini-2.5-flash` for the coding agent, and `gemini-2.0-flash` for the title and response generators.
+Model configuration lives in `src/inngest/functions.ts` and is driven by environment variables rather than hardcoded names: `CODING_AGENT_MODEL` for the coding agent, and `GENERATOR_MODEL` for the title and response generators.
 
 ### The sandbox template
 
@@ -241,7 +241,7 @@ Values that control runtime behavior and are set in code, not the environment:
 | Sandbox lifetime | `src/inngest/index.ts` | 30 minutes, refreshed on every reconnect |
 | Agent iteration limit | `src/inngest/functions.ts` | 15 network iterations |
 | Conversation history depth | `src/inngest/functions.ts` | Last 5 messages per project |
-| Agent models | `src/inngest/functions.ts` | `gemini-2.5-flash` (code), `gemini-2.0-flash` (title, response) |
+| Agent models | `src/inngest/functions.ts` | `CODING_AGENT_MODEL` (code), `GENERATOR_MODEL` (title, response) |
 | Credit rules | `src/lib/usage.ts` | 5 free / 100 Pro points per 30 days; 1 per generation |
 | Client message polling | `src/modules/projects/ui/components/messages-container.tsx` | 5 seconds |
 | Sandbox template | `src/inngest/functions.ts` | `alpha-coder-template` |

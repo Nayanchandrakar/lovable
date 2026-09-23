@@ -4,8 +4,8 @@ import {
   createNetwork,
   createState,
   createTool,
-  gemini,
   type Message,
+  openai,
   type Tool,
 } from "@inngest/agent-kit"
 import z from "zod"
@@ -15,6 +15,7 @@ import {
   RESPONSE_PROMPT,
 } from "@/constants/prompt"
 import { prisma } from "@/lib/db"
+import { serverEnv } from "@/lib/env/server"
 import { SANDBOX_TIMEOUT } from "."
 import { inngest } from "./client"
 import {
@@ -31,8 +32,7 @@ type AgentState = {
 }
 
 export const codeAgentFunction = inngest.createFunction(
-  { id: "code-agent" },
-  { event: "code-agent/run" },
+  { id: "code-agent", triggers: { event: "code-agent/run" } },
   async ({ event, step }) => {
     const sandboxId = await step.run("get-sandbox-id", async () => {
       const sandbox = await Sandbox.create("vibe-coder-template")
@@ -80,8 +80,9 @@ export const codeAgentFunction = inngest.createFunction(
       name: "code-agent",
       system: PROMPT,
       description: "an expert coding agent",
-      model: gemini({
-        model: "gemini-2.5-flash",
+      model: openai({
+        baseUrl: serverEnv.OPENAI_BASE_URL,
+        model: serverEnv.CODING_AGENT_MODEL,
       }),
       tools: [
         createTool({
@@ -214,8 +215,9 @@ export const codeAgentFunction = inngest.createFunction(
       name: "fragment-title-generator",
       system: FRAGMENT_TITLE_PROMPT,
       description: "A fragment title generator",
-      model: gemini({
-        model: "gemini-2.0-flash",
+      model: openai({
+        baseUrl: serverEnv.OPENAI_BASE_URL,
+        model: serverEnv.GENERATOR_MODEL,
       }),
     })
 
@@ -223,8 +225,9 @@ export const codeAgentFunction = inngest.createFunction(
       name: "response-generator",
       system: RESPONSE_PROMPT,
       description: "A response generator",
-      model: gemini({
-        model: "gemini-2.0-flash",
+      model: openai({
+        baseUrl: serverEnv.OPENAI_BASE_URL,
+        model: serverEnv.GENERATOR_MODEL,
       }),
     })
 

@@ -17,7 +17,7 @@
     "@clerk/themes": "^2.4.57",
     "@e2b/code-interpreter": "^1.5.1",
     "@hookform/resolvers": "^5.4.0",
-    "@inngest/agent-kit": "^0.9.0",
+    "@inngest/agent-kit": "^0.13.2",
     "@opentelemetry/winston-transport": "^0.14.1",
     "@paralleldrive/cuid2": "^2.3.1",
     "@prisma/client": "^6.19.3",
@@ -58,7 +58,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.4.0",
     "embla-carousel-react": "^8.6.0",
-    "inngest": "^3.54.2",
+    "inngest": "^4.21.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.525.0",
     "next": "15.3.5",
@@ -79,7 +79,7 @@
     "tailwind-merge": "^3.6.0",
     "tsx": "^4.22.4",
     "vaul": "^1.1.2",
-    "zod": "^3.25.76"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
