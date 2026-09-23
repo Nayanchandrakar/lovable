@@ -14,7 +14,7 @@ function PricingPage() {
         <div className="flex flex-col items-center">
           <Image
             src="/logo.svg"
-            alt="vibe"
+            alt="alpha"
             width={15}
             height={15}
             className="hidden md:block"

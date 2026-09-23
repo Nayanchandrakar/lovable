@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/06ccac25-bdfb-4336-bcc1-2ffef5b63e3e" width="100%" alt="Vibe: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL.">
+  <img src="https://github.com/user-attachments/assets/06ccac25-bdfb-4336-bcc1-2ffef5b63e3e" width="100%" alt="Alpha: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL.">
 </p>
 
 Describe an application in plain language, and an autonomous coding agent writes it inside an isolated cloud sandbox, runs it, and returns a live preview you can keep iterating on.
 
-Vibe implements the "chat-to-app" product pattern popularized by Lovable - prompt in, working Next.js app out - as a full-stack TypeScript codebase covering agent orchestration, sandboxed code execution, persistent billing, and a split chat/preview/code UI.
+Alpha implements the "chat-to-app" product pattern popularized by Lovable - prompt in, working Next.js app out - as a full-stack TypeScript codebase covering agent orchestration, sandboxed code execution, persistent billing, and a split chat/preview/code UI.
 
 **Before you start:** PostgreSQL, a Clerk application (with a `pro` plan for billing), a Gemini API key, an E2B account, and the Inngest dev server. All five are covered in [Getting started](#getting-started).
 
@@ -17,7 +17,7 @@ Building software with an LLM is not just a prompt problem. The hard parts are:
 - **Giving the model real feedback.** The agent needs to read files, install packages, and run commands - not hallucinate an entire app from a single completion.
 - **Making the result inspectable.** Users need to see the running app and the generated source, and be able to ask for changes.
 
-Vibe is an end-to-end implementation of those four concerns in one repository, which makes it a useful reference for how agentic developer tools are actually wired together.
+Alpha is an end-to-end implementation of those four concerns in one repository, which makes it a useful reference for how agentic developer tools are actually wired together.
 
 ## Features
 
@@ -40,7 +40,7 @@ Four problems shape this product category, and the whole repository is organized
 - **Giving the model real feedback.** The agent reads files, installs packages, and runs commands instead of hallucinating an entire app from a single completion.
 - **Making the result inspectable.** Users need to see the running app and the generated source, and be able to ask for changes.
 
-Those four concerns produce three runtimes and one durable record. Vibe is an end-to-end implementation of them in one repository, which makes it a useful reference for how agentic developer tools are actually wired together:
+Those four concerns produce three runtimes and one durable record. Alpha is an end-to-end implementation of them in one repository, which makes it a useful reference for how agentic developer tools are actually wired together:
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/75ad1ebd-d91d-4f9b-9384-5d2988907b06" width="100%" alt="Where the work happens: the Next.js app server handles the synchronous tRPC request, consumes a credit and emits an event; an Inngest function runs the agent in memoized steps; an E2B sandbox gives the agent a terminal and a filesystem. The browser polls every five seconds and renders the stored fragment as a live preview iframe and a code tree.">
@@ -60,7 +60,7 @@ sequenceDiagram
     U->>W: Prompt
     W->>DB: Consume credit, store user Message
     W->>I: Emit code-agent/run event
-    I->>S: Create sandbox from vibe-coder-template
+    I->>S: Create sandbox from alpha-coder-template
     loop Up to 15 iterations
         A->>S: terminal / createOrUpdateFiles / readFiles
         S-->>A: stdout, file contents
@@ -72,7 +72,7 @@ sequenceDiagram
 ```
 
 1. **Prompt submission.** The home page or project chat pane calls a tRPC mutation. The server verifies project ownership, consumes one credit, stores the user's message, and emits a `code-agent/run` Inngest event - then returns immediately. Generation is not part of the HTTP request.
-2. **Sandbox provisioning.** The Inngest function creates an E2B sandbox from the `vibe-coder-template` and extends its timeout to 30 minutes. The sandbox ID is captured inside a memoized step, so a retry reconnects to the same sandbox instead of creating a new one.
+2. **Sandbox provisioning.** The Inngest function creates an E2B sandbox from the `alpha-coder-template` and extends its timeout to 30 minutes. The sandbox ID is captured inside a memoized step, so a retry reconnects to the same sandbox instead of creating a new one.
 3. **Agent run.** A `@inngest/agent-kit` network runs a single agent equipped with three tools - `terminal`, `createOrUpdateFiles`, and `readFiles` - all executing against the sandbox. The network iterates up to 15 times, seeded with the previous five messages from the project for continuity.
 4. **Completion detection.** The agent's system prompt (`src/constants/prompt.ts`) requires it to end its work with a `<task_summary>` block. A lifecycle hook watches model responses, and when the summary appears it's stored in network state. The network router then stops routing to the code agent.
 5. **Post-processing.** Two small, fast agents derive a 3-word fragment title and a short user-facing completion message from the summary.
@@ -98,7 +98,7 @@ Model configuration lives in `src/inngest/functions.ts`: `gemini-2.5-flash` for 
 - `node:21-slim` base with `curl` installed.
 - A scaffolded Next.js 15.3.3 app plus the full shadcn/ui component library, initialized with `shadcn init` and `shadcn add --all`.
 - `compile_page.sh` as the start command - it launches `next dev --turbopack` and polls `localhost:3000` until the first page compiles, so a sandbox is only considered ready once the app actually serves traffic.
-- `e2b.toml` binds the template name (`vibe-coder-template`) and start command. The template name is referenced literally in `src/inngest/functions.ts`, so building it under a different name requires updating that reference.
+- `e2b.toml` binds the template name (`alpha-coder-template`) and start command. The template name is referenced literally in `src/inngest/functions.ts`, so building it under a different name requires updating that reference.
 
 ### Credits and plans
 
@@ -168,7 +168,7 @@ bun install
 Create a `.env` file in the project root:
 
 ```bash
-DATABASE_URL="postgresql://user:password@localhost:5432/vibe"
+DATABASE_URL="postgresql://user:password@localhost:5432/alpha"
 
 GEMINI_API_KEY="your-google-ai-api-key"
 E2B_API_KEY="your-e2b-api-key"
@@ -207,7 +207,7 @@ cd sandbox-templates/nextjs
 npx e2b template build
 ```
 
-This uses `e2b.toml` (template name `vibe-coder-template`) and `e2b.Dockerfile`. Building takes a few minutes because the image installs the full shadcn/ui component set. If you rename the template, update the `Sandbox.create(...)` call in `src/inngest/functions.ts` to match.
+This uses `e2b.toml` (template name `alpha-coder-template`) and `e2b.Dockerfile`. Building takes a few minutes because the image installs the full shadcn/ui component set. If you rename the template, update the `Sandbox.create(...)` call in `src/inngest/functions.ts` to match.
 
 ### 5. Run the app and the workflow engine
 
@@ -244,7 +244,7 @@ Values that control runtime behavior and are set in code, not the environment:
 | Agent models | `src/inngest/functions.ts` | `gemini-2.5-flash` (code), `gemini-2.0-flash` (title, response) |
 | Credit rules | `src/lib/usage.ts` | 5 free / 100 Pro points per 30 days; 1 per generation |
 | Client message polling | `src/modules/projects/ui/components/messages-container.tsx` | 5 seconds |
-| Sandbox template | `src/inngest/functions.ts` | `vibe-coder-template` |
+| Sandbox template | `src/inngest/functions.ts` | `alpha-coder-template` |
 | Agent system prompts | `src/constants/prompt.ts` | Sandbox rules, title prompt, response prompt |
 | Prompt presets | `src/constants/project-templates.ts` | 8 starter prompts |
 
@@ -313,7 +313,3 @@ All procedures are `protectedProcedure` - they reject unauthenticated calls and 
 - **No CI or deployment configuration** is checked in. Running this in production requires Inngest Cloud (or self-hosted), a managed Postgres instance, production Clerk keys, and a rebuilt E2B template - see "Getting started" for the equivalent local setup.
 - **UI metadata is still scaffold defaults** in `src/app/layout.tsx` (page title and description from `create-next-app`).
 - **Polling, not streaming.** Progress is surfaced by refetching messages every 5 seconds rather than pushing events to the client.
-
-## License
-
-No license file is included in this repository. All rights are reserved by the author by default - add a `LICENSE` file before using this code in a way that requires explicit permission.

@@ -63,7 +63,7 @@ export const FragmentWeb = ({ data }: FragmentWebProps) => {
         sandbox="allow-form allow-scripts allow-same-origin"
         loading="lazy"
         src={data.sandboxUrl!}
-        title="vibe-iframe"
+        title="alpha-iframe"
       />
     </div>
   )

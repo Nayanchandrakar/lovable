@@ -40,7 +40,7 @@ export const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
             size="sm"
             className="focus-visible:ring-0 hover:bg-transparent hover:opacity-75 transition-opacity pl-2"
           >
-            <Image src="/logo.svg" alt="vibe" width={18} height={18} />
+            <Image src="/logo.svg" alt="alpha" width={18} height={18} />
             <span className="text-sm font-medium">{project?.name}</span>
             <ChevronDownIcon />
           </Button>
