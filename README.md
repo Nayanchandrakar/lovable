@@ -1,4 +1,3 @@
-<img width="1200" height="668" alt="architecture" src="https://github.com/user-attachments/assets/2ac8f591-4221-46b2-a493-4238a6d1c1f9" />
 <p align="center">
   <img width="1200" height="420" alt="hero" src="https://github.com/user-attachments/assets/fe8e6823-2c36-4481-86b4-7986a3db679e" /> result is saved as a fragment with a live preview URL.">
 </p>
