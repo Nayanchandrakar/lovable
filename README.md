@@ -1,4 +1,4 @@
-![Alpha: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL.](https://github.com/user-attachments/assets/06ccac25-bdfb-4336-bcc1-2ffef5b63e3e)
+<img width="1920" height="1080" alt="Alpha: describe an app in plain language and an autonomous agent builds it. The run panel walks through one generation - a memoized step creates an E2B sandbox, the agent writes and reads files and runs terminal commands, and the result is saved as a fragment with a live preview URL." src="https://github.com/user-attachments/assets/2b4d5fe3-1475-43eb-8a7a-8029dc59a651" />
 
 Describe an application in plain language, and an autonomous coding agent writes it inside an isolated cloud sandbox, runs it, and returns a live preview you can keep iterating on.
 
